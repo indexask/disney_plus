@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+    <style>
+        .carousel-control-next, .carousel-control-prev{
+            opacity: 0,1;
+            background-color: #9ea7b05f;
+        }
+
+
+        .categorias{
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cate{
+            border-radius: 5%;
+        }
+
+   
+        body {
+            background-color: #030408;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card {
+            margin: 10px;
+            opacity: 0.9;
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            padding: 1px;
+        }
+        .support {
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+    bottom: 20px; 
+    right: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+}
+    </style>
+    <title>{% block title %}Django Peliculas{% endblock %}</title>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'pelicula-list' %}"><img src="{% static 'images/logo.png' %}"  alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pelicula-list' %}">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'agregarpelicula' %}">Nueva Película</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'gestion_peliculas' %}">Gestion de Películas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <div class="support">
+            <a href="http://127.0.0.1:8001/"><i class="bi bi-bell-fill"></i></a>
+        </div>
+
+    </div>
+    <!-- Agrego los scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
